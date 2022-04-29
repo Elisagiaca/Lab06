@@ -6,25 +6,27 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import it.polito.tdp.meteo.model.*;
 
 public class EntryPoint extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
      
-        
     	FXMLController controller;
     	
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Scene.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/Styles.css");
-        scene.getRoot().setStyle("-fx-font-family: 'serif'");
-
+        
         controller = loader.getController();
     	
         // TODO impostare il model nel controller        
+        Model model = new Model();
+        controller.setModel(model);
+       
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("/styles/Styles.css");
+        scene.getRoot().setStyle("-fx-font-family: 'serif'");
         
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);
